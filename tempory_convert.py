@@ -1,3 +1,4 @@
+# temconvert
 val = input("请输入温度值：")
 if val[-1] in ['C', 'c']:
     f = 1.8*float(val[0:-1])+32
