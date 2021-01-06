@@ -1,9 +1,17 @@
 import turtle
+import time
+
+
+def drawgap():
+    turtle.penup()
+    turtle.fd(5)
 
 
 def drawline(draw):
+    drawgap()
     turtle.pendown() if draw else turtle.penup()
     turtle.fd(40)
+    drawgap()
     turtle.right(90)
 
 
@@ -22,8 +30,22 @@ def drawdigit(digit):
 
 
 def drawdate(date):
+    turtle.pencolor("red")
     for i in date:
-        drawdigit(eval(i))
+        if i == '-':
+            turtle.write('年', font=("Arial", 18, "normal"))
+            turtle.pencolor("green")
+            turtle.fd(40)
+        elif i == '=':
+            turtle.write('月', font=("Arial", 18, "normal"))
+            turtle.pencolor("blue")
+            turtle.fd(40)
+        elif i == '+':
+            turtle.write('日', font=("Arial", 18, "normal"))
+            turtle.pencolor("purple")
+            turtle.fd(40)
+        else:
+            drawdigit(eval(i))
 
 
 def main():
@@ -31,8 +53,9 @@ def main():
     turtle.penup()
     turtle.fd(-300)
     turtle.pensize(6)
-    turtle.color('#948473')
-    drawdate('20200106')
+    drawdate(time.strftime('%Y-%m=%d+', time.gmtime()))
+    # turtle.color('#847509')
+    # drawdate('20200106')
     turtle.hideturtle()
     turtle.done()
 
